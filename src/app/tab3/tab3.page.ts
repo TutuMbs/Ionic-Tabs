@@ -1,3 +1,4 @@
+import {NavigationExtras, Router} from '@angular/router';
 import { Component } from '@angular/core';
 import { IAtores } from '../model/IAtores';
 
@@ -8,7 +9,7 @@ import { IAtores } from '../model/IAtores';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor(public router:Router) {}
 
   listaAtores: IAtores[] = [
     {
@@ -63,4 +64,9 @@ export class Tab3Page {
       favorito: false
     },
   ]
+
+  exibirAtores(atores:IAtores){
+    const navigationExtras: NavigationExtras = {state:{paramAtores:atores}};
+    this.router.navigate(['atores-detalhe'], navigationExtras);
+  }
 }
